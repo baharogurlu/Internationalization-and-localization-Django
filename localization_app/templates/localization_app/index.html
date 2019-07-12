@@ -1,0 +1,53 @@
+{% extends "localization_app/includes/base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% block body_block %}
+<fieldset>
+    <section class="col-md-6 col-md-offset-3 col-sm-offset-3">
+
+        {% get_current_language as LANGUAGE_CODE %}
+        <h4>Language: {{ LANGUAGE_CODE }}</h4>
+        <p></p>
+
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="text" value="{{ redirect_to }}">
+            <select name="language" id="">
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code}}" {% if language.code == LANGUAGE_CODE %}  selected="selected" {% endif %}>
+                        {{language.name_local}} ({{language.code}})
+                    </option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-success btn-xs">Go </button>
+        </form>
+    </section>
+</fieldset>
+<hr>
+<fieldset>
+        <section class="col-md-6 col-md-offset-3 col-sm-offset-3">
+       <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">{% trans "Enter Email" %}</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">{% trans "Enter Password" %}</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">{% trans "Enter File" %}</label>
+            <input type="file" id="exampleInputFile">
+            <p class="help-block">Example block-level help text here.</p>
+          </div>
+        </form>
+
+    </section>
+</fieldset>
+
+{% endblock %}
+
+
+

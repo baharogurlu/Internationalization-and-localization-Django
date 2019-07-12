@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load i18n %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href = "{% static 'localization_app/vendor/bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href = "{% static 'localization_app/vendor/bootstrap-3.3.7/css/bootstrap-theme.min.css' %}">
+
+    <title>Index</title>
+
+
+    {% block javascript %}
+        <script type="text/javascript" src="{% static 'localization_app/vendor/jquery-3.2.1/js/jquery-3.2.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'localization_app/vendor/jquery-3.2.1/js/jquery-ui-1.12.0.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'localization_app/vendor/bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+
+    {% endblock %}
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header" style="height:5px !important">
+
+    </div>
+
+
+    <div class="container">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <a class="navbar-brand"  href="#">Localization App</a>
+            </div>
+          </div><!-- /.container-fluid -->
+        </nav>
+        <div class="row">
+            <div class="col-md-12">
+                {% block body_block %}
+
+                {% endblock %}
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="bs-docs-footer navbar-fixed-bottom">
+      <div class="container">
+      </div>
+    </footer>
+
+
+</div>
+
+
+
+</body>
+</html>
